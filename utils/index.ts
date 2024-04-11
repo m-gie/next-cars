@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import { CarProps, FilterProps } from "@/types";
 
 export async function fetchCars(filters: FilterProps) {
@@ -15,7 +16,7 @@ export async function fetchCars(filters: FilterProps) {
   url.searchParams.append("limit", `${limit}`);
   url.searchParams.append("model", model);
 
-  const response = await fetch(url, { headers: headers });
+  const response = await fetch(url, { headers });
   const result = await response.json();
   return result;
 }
