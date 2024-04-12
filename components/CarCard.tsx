@@ -8,22 +8,14 @@ import { calculateCarRent, generateCarImageUrl } from "@/utils";
 
 interface CarCardProps {
   car: CarProps;
+  color: string;
 }
 
-const generateRandomColor = () => {
-  // const minCeiled = Math.ceil(1);
-  // const maxFloored = Math.floor(250);
-  const randomNumber = Math.floor(Math.random() * (250 - 1) + 1).toString();
-  const zeroesCount = 4 - randomNumber.length;
-  const randomPaint = `pspc${"0".repeat(zeroesCount)}${randomNumber}`;
-  return randomPaint;
-};
-
-const CarCard = ({ car }: CarCardProps) => {
+const CarCard = ({ car, color }: CarCardProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const { city_mpg, year, make, model, transmission, drive } = car;
   const carRent = calculateCarRent(city_mpg, year);
-  const color = generateRandomColor();
+  // const color = generateRandomColor();
 
   return (
     <div className="car-card group">

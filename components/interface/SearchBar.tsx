@@ -12,9 +12,9 @@ const SearchBar = () => {
   const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    if (manufacturer === "" && model === "") {
-      return alert("Please fill in the search bar.");
-    }
+    // if (manufacturer === "" && model === "") {
+    //   return alert("Please fill in the search bar.");
+    // }
 
     updateSearchParams(model.toLowerCase(), manufacturer.toLowerCase());
   };
@@ -54,7 +54,7 @@ const SearchBar = () => {
           alt="model icon"
           width={25}
           height={25}
-          className="absolute w-[20px] h-[20px] ml-4"
+          className="absolute ml-4 size-[20px]"
         />
         <input
           type="text"
@@ -65,8 +65,26 @@ const SearchBar = () => {
           className="searchbar__input"
         />
         <SearchButton styleClasses="sm:hidden" />
+
+        <button
+          type="button"
+          className="z-10 -ml-3 rounded-full bg-primary-blue-100"
+        >
+          <Image
+            src="/close.svg"
+            alt="magnifying glass"
+            width={25}
+            height={25}
+            className="object-contain"
+            onClick={() => {
+              setmodel("");
+              setManufacturer("");
+              updateSearchParams("", "");
+            }}
+          />
+        </button>
       </div>
-      <SearchButton styleClasses="max-sm:hidden" />
+      <SearchButton styleClasses="max-sm:hidden ml-2" />
     </form>
   );
 };

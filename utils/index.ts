@@ -61,3 +61,10 @@ export const updateSearchParams = (title: string, value: string) => {
   const newPathName = `${window.location.pathname}?${searchParams.toString()}`;
   return newPathName;
 };
+
+export const generateRandomColor = () => {
+  const randomNumber = Math.floor(Math.random() * (250 - 1) + 1).toString();
+  const zeroesCount = 4 - randomNumber.length;
+  const randomPaint = `pspc${"0".repeat(zeroesCount)}${randomNumber}`;
+  return randomPaint;
+};

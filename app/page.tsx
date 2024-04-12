@@ -1,9 +1,13 @@
-import Image from "next/image";
 import { CustomFilter, Hero, SearchBar, CarCard, ShowMore } from "@/components";
-import { fetchCars } from "@/utils";
+import { fetchCars, generateRandomColor } from "@/utils";
 import { fuels, yearsOfProduction } from "@/constants";
+import { CarsSearchProps } from "@/types";
 
-export default async function Home({ searchParams }) {
+export default async function Home({
+  searchParams,
+}: {
+  searchParams: CarsSearchProps;
+}) {
   const allCars = await fetchCars({
     manufacturer: searchParams.manufacturer || "",
     year: searchParams.year || 2022,
@@ -12,12 +16,11 @@ export default async function Home({ searchParams }) {
     model: searchParams.model || "",
   });
   const isDataEmpty = !Array.isArray(allCars) || allCars.length < 1 || !allCars;
-  console.log(allCars);
 
   return (
     <main className="overflow-hidden">
       <Hero />
-      <div className="mt-12 padding-x padding-y max-width" id="discover">
+      <div className="padding-x padding-y max-width mt-12" id="discover">
         <div className="home__text-container">
           <h1 className="text-4xl font-extrabold">Car Catalogue</h1>
           <p>Explore the cars you might like</p>
@@ -33,8 +36,8 @@ export default async function Home({ searchParams }) {
         {!isDataEmpty ? (
           <section>
             <div className="home__cars-wrapper">
-              {allCars?.map((car) => (
-                <CarCard car={car} />
+              {allCars?.map((car, index) => (
+                <CarCard key={index} car={car} color={generateRandomColor()} />
               ))}
             </div>
             <ShowMore
@@ -43,8 +46,8 @@ export default async function Home({ searchParams }) {
             />
           </section>
         ) : (
-          <div className="home__error-contain">
-            <h2 className="text-black text-xl font-bold">NO CARS</h2>
+          <div className="home__error-container">
+            <h2 className="text-xl font-bold text-black">NO CARS</h2>
             <p>{allCars?.message}</p>
           </div>
         )}

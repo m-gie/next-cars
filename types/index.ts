@@ -1,4 +1,11 @@
 import { MouseEventHandler } from "react";
+export interface CarsSearchProps {
+  manufacturer?: string;
+  year?: number;
+  fuel?: string;
+  limit?: number;
+  model?: string;
+}
 
 export interface ButtonProps {
   title: string;

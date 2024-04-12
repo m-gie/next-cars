@@ -3,7 +3,7 @@ import Image from "next/image";
 
 const SearchButton = ({ styleClasses }: { styleClasses: string }) => {
   return (
-    <button type="submit" className={`-ml-3 z-10 ${styleClasses}`}>
+    <button type="submit" className={`z-10 -ml-3 ${styleClasses}`}>
       <Image
         src="/magnifying-glass.svg"
         alt="magnifying glass"

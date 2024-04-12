@@ -25,7 +25,7 @@ const CustomFilter = ({ title, options }: CustomFilterProps) => {
           handleUpdateParameters(e);
         }}
       >
-        <div className="relative w-fit z-10">
+        <div className="relative z-10 w-fit">
           <Listbox.Button className="custom-filter__btn">
             <span className="block truncate">{selected.title}</span>
             <Image

@@ -13,7 +13,7 @@ const ShowMore = ({ pageNumber, isNext }: ShowMoreProps) => {
     router.push(newPathName, { scroll: false });
   };
   return (
-    <div className="w-full flex-center gap-5 mt-10">
+    <div className="flex-center mt-10 w-full items-center gap-5">
       {!isNext && (
         <Button
           title="Show More"
@@ -22,6 +22,13 @@ const ShowMore = ({ pageNumber, isNext }: ShowMoreProps) => {
           handleClick={handleNavigation}
         />
       )}
+      <a href="#discover">
+        <Button
+          title="Back to Top"
+          containerStyles="bg-primary-blue text-white rounded-full"
+          handleClick={() => {}}
+        />
+      </a>
     </div>
   );
 };
